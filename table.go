@@ -12,6 +12,7 @@ type TableRequest struct {
 type TableResponse struct {
 	ResponseStatus
 	Durations [][]float32 `json:"durations"`
+	Distances [][]float32 `json:"distances"`
 }
 
 func (r TableRequest) request() *request {

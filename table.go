@@ -5,6 +5,7 @@ type TableRequest struct {
 	Profile               string
 	Coordinates           Geometry
 	Sources, Destinations []int
+	Annotations           Annotations
 }
 
 // TableResponse resresents a response from the table method
@@ -20,6 +21,9 @@ func (r TableRequest) request() *request {
 	}
 	if len(r.Destinations) > 0 {
 		opts.addInt("destinations", r.Destinations...)
+	}
+	if r.Annotations != "" {
+		opts.add("annotations", string(r.Annotations))
 	}
 
 	return &request{
